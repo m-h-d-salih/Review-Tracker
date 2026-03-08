@@ -112,8 +112,8 @@ export default function EditReviewModal({ review, onClose, onUpdated }: Props) {
         .mf-btns{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;padding-top:.25rem;}
         .mf-btn-cancel{padding:.8rem;border-radius:10px;border:1.5px solid #1f2937;background:none;color:#9ca3af;font-size:.88rem;font-weight:600;cursor:pointer;transition:background .15s,color .15s;font-family:inherit;}
         .mf-btn-cancel:hover{background:#1f2937;color:#e5e7eb;}
-        .mf-btn-submit{padding:.8rem;border-radius:10px;border:none;background:#6366f1;color:#fff;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .15s;font-family:inherit;}
-        .mf-btn-submit:hover{background:#818cf8;}
+        .mf-btn-submit{padding:.8rem;border-radius:10px;border:none;background:#00d4a4;color:#07090f;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .15s;font-family:inherit;}
+        .mf-btn-submit:hover{background:#00efb8;}
         .mf-btn-submit:disabled{opacity:.5;cursor:not-allowed;}
       `}</style>
     </>
