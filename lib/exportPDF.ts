@@ -92,11 +92,22 @@ export function exportReviewsPDF(
     doc.text(`Page ${i} of ${pageCount}`, 283, 205, { align: 'right' });
   }
 
- const blob = doc.output('blob');
+const blob = doc.output('blob');
   const url = URL.createObjectURL(blob);
-  const newTab = window.open(url, '_blank');
-  if (!newTab) {
-    window.location.href = url;
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    const newTab = window.open(url, '_blank');
+    if (!newTab) window.location.href = url;
+    setTimeout(() => URL.revokeObjectURL(url), 30000);
+  } else {
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `review-tracker-${year}-${String(month).padStart(2, '0')}.pdf`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 3000);
   }
   setTimeout(() => URL.revokeObjectURL(url), 30000);
 }
