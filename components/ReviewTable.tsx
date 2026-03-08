@@ -19,8 +19,8 @@ export default function ReviewTable({ reviews, onDelete, onEdit }: Props) {
     return (
       <div className="rt-empty">
         <span className="rt-empty-icon">📭</span>
-        <p className="rt-empty-title">No entries found</p>
-        <p className="rt-empty-sub">Try a different search or add a new entry.</p>
+        <p className="rt-empty-title" style={{color:'#e5e7eb'}}>No entries found</p>
+        <p className="rt-empty-sub" style={{color:'#9ca3af'}}>Try a different search or add a new entry.</p>
       </div>
     );
   }
