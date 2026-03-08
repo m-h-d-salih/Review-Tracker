@@ -118,7 +118,7 @@ const advisorMap: Record<string, AdvisorStat> = {};
   allTime.forEach(r => {
     const key = r.advisor_name.toLowerCase().trim();
     if (!advisorMap[key]) {
-      advisorMap[key] = { advisor_name: r.advisor_name, total:0, review:0, session:0, group_session:0, group_project:0 };
+      advisorMap[key] = { advisor_name: r.advisor_name|| 'Unknown', total:0, review:0, session:0, group_session:0, group_project:0 };
     }
     advisorMap[key].total++;
     advisorMap[key][r.type]++;
