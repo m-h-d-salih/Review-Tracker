@@ -92,5 +92,13 @@ export function exportReviewsPDF(
     doc.text(`Page ${i} of ${pageCount}`, 283, 205, { align: 'right' });
   }
 
-  doc.save(`reviews-${year}-${String(month).padStart(2, '0')}.pdf`);
+  const blob = doc.output('blob');
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `review-tracker-${year}-${String(month).padStart(2, '0')}.pdf`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 3000);
 }
