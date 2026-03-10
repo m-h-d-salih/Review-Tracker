@@ -28,6 +28,7 @@ export interface InternStat {
 export interface AnalyticsData {
   totalAllTime: number;
   totalThisMonth: number;
+  totalToday: number;
   typeDistribution: { name: string; value: number; color: string }[];
   monthlyTrend: MonthlyTrend[];
   topAdvisors: AdvisorStat[];
@@ -73,7 +74,8 @@ const { data: reviews } = await supabase
   const now = new Date();
   const thisMonthFrom = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-01`;
   const totalThisMonth = all.filter(r => r.review_date >= thisMonthFrom).length;
-
+const today = new Date().toISOString().split('T')[0]; // e.g. "2026-03-10"
+const totalToday = allTime.filter(r => r.review_date === today).length;
   // Type distribution
  const typeCounts: Record<ReviewType, number> = { review: 0, session: 0, group_session: 0, group_project: 0 };
   allTime.forEach(r => { typeCounts[r.type] = (typeCounts[r.type] ?? 0) + 1; });
@@ -148,5 +150,6 @@ const internMap: Record<string, InternStat> = {};
     topAdvisors,
     topInterns,
     recentActivity,
+    totalToday
   };
 }

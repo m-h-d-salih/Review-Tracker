@@ -81,7 +81,7 @@ export default function AnalyticsPage() {
             <div className="kpi-row">
               <KpiCard label="All-Time Entries"  value={data.totalAllTime}   sub="Since account creation" color="#00d4a4"/>
               <KpiCard label="This Month"        value={data.totalThisMonth} sub="Current month activity" color="#6366f1"/>
-              {/* <KpiCard label="Active Interns"  value={data.topInterns.length}  sub="In last 6 months" color="#f59e0b"/> */}
+              <KpiCard label="Today"  value={data.totalToday}  sub="Todays Activity" color="#f59e0b"/>
               {/* <KpiCard label="Active Advisors" value={data.topAdvisors.length} sub="In last 6 months" color="#ef4444"/> */}
             </div>
 
@@ -262,8 +262,9 @@ export default function AnalyticsPage() {
 
         /* Grid */
         .analytics-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;}
-        .kpi-row{grid-column:span 12;display:grid;grid-template-columns:repeat(2,1fr);max-width:520px;gap:1rem;}
-        @media(max-width:400px){.kpi-row{grid-template-columns:1fr 1fr;gap:.6rem;}}
+       .kpi-row{grid-column:span 12;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+@media(max-width:768px){.kpi-row{grid-template-columns:repeat(2,1fr);gap:.75rem;}}
+@media(max-width:400px){.kpi-row{gap:.5rem;}}
 
         /* KPI cards */
         .kpi-card{background:#0d1117;border:1px solid #1f2937;border-radius:14px;padding:1.1rem 1.1rem .9rem;position:relative;overflow:hidden;}
