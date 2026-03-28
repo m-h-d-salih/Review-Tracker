@@ -29,6 +29,8 @@ export interface AnalyticsData {
   totalAllTime: number;
   totalThisMonth: number;
   totalToday: number;
+   mostInADay: number;
+   mostInADayDate:string,
   typeDistribution: { name: string; value: number; color: string }[];
   monthlyTrend: MonthlyTrend[];
   topAdvisors: AdvisorStat[];
@@ -76,6 +78,13 @@ const { data: reviews } = await supabase
   const totalThisMonth = all.filter(r => r.review_date >= thisMonthFrom).length;
 const today = new Date().toISOString().split('T')[0]; // e.g. "2026-03-10"
 const totalToday = allTime.filter(r => r.review_date === today).length;
+
+// Most reviews in a single day
+// Most reviews in a single day
+const dayMap: Record<string, number> = {};
+allTime.forEach(r => { dayMap[r.review_date] = (dayMap[r.review_date] ?? 0) + 1; });
+const mostInADay = Object.values(dayMap).length > 0 ? Math.max(...Object.values(dayMap)) : 0;
+const mostInADayDate = Object.entries(dayMap).find(([, v]) => v === mostInADay)?.[0] ?? '';
   // Type distribution
  const typeCounts: Record<ReviewType, number> = { review: 0, session: 0, group_session: 0, group_project: 0 };
   allTime.forEach(r => { typeCounts[r.type] = (typeCounts[r.type] ?? 0) + 1; });
@@ -150,6 +159,8 @@ const internMap: Record<string, InternStat> = {};
     topAdvisors,
     topInterns,
     recentActivity,
-    totalToday
+    totalToday,
+    mostInADay,
+    mostInADayDate
   };
 }

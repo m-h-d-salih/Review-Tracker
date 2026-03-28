@@ -179,8 +179,8 @@ export default function DashboardPage() {
       <style suppressHydrationWarning>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:wght@400;500;600&display=swap');
         *{box-sizing:border-box;}
-        .app-shell{display:flex;min-height:100vh;background:#07090f;font-family:'Instrument Sans',sans-serif;}
-        .main-content{flex:1;margin-left:240px;padding:2rem;min-height:100vh;}
+        .app-shell{display:flex;min-height:100vh;background:#07090f;font-family:'Instrument Sans',sans-serif;overflow-x:hidden;width:100%;}
+.main-content{flex:1;margin-left:240px;padding:2rem;min-height:100vh;min-width:0;overflow-x:hidden;}
         @media(max-width:768px){.main-content{margin-left:0;padding:1rem;padding-top:68px;}}
 
         /* Header */

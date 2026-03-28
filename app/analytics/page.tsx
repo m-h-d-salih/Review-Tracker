@@ -82,7 +82,12 @@ export default function AnalyticsPage() {
               <KpiCard label="All-Time Entries"  value={data.totalAllTime}   sub="Since account creation" color="#00d4a4"/>
               <KpiCard label="This Month"        value={data.totalThisMonth} sub="Current month activity" color="#6366f1"/>
               <KpiCard label="Today"  value={data.totalToday}  sub="Todays Activity" color="#f59e0b"/>
-              {/* <KpiCard label="Active Advisors" value={data.topAdvisors.length} sub="In last 6 months" color="#ef4444"/> */}
+              <KpiCard 
+  label="Most in a Day" 
+  value={data.mostInADay} 
+  sub={data.mostInADayDate ? new Date(data.mostInADayDate).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : '—'} 
+  color="#f59e0b"
+/>
             </div>
 
             {/* ── Monthly trend ── */}
