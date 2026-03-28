@@ -86,7 +86,7 @@ export default function AnalyticsPage() {
   label="Most in a Day" 
   value={data.mostInADay} 
   sub={data.mostInADayDate ? new Date(data.mostInADayDate).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : '—'} 
-  color="#f59e0b"
+  color="#ef4444"
 />
             </div>
 
