@@ -107,6 +107,7 @@ const mostInADayDate = Object.entries(dayMap).find(([, v]) => v === mostInADay)?
   const monthlyTrend: MonthlyTrend[] = [];
   for (let i = totalMonths; i >= 0; i--) {
     const d = new Date();
+     d.setDate(1); // ← fix: set to 1st before subtracting months
     d.setMonth(d.getMonth() - i);
     const y = d.getFullYear();
     const m = d.getMonth() + 1;
